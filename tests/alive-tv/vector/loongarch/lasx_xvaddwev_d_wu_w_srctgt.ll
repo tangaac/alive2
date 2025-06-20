@@ -1,0 +1,11 @@
+define <4 x i64> @src() {
+ %1 = call <4 x i64> @llvm.loongarch.lasx.xvaddwev.d.wu.w(<8 x i32> <i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7>, <8 x i32> <i32 8, i32 9, i32 10, i32 11, i32 12, i32 13, i32 14, i32 15>)
+ ret <4 x i64> %1
+}
+
+define <4 x i64> @tgt() {
+ ret <4 x i64> <i64 8, i64 12, i64 16, i64 20>
+}
+
+declare <4 x i64> @llvm.loongarch.lasx.xvaddwev.d.wu.w(<8 x i32>, <8 x i32>)
+

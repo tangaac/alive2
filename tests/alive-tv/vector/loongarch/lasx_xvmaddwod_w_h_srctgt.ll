@@ -1,0 +1,11 @@
+define <8 x i32> @src() {
+ %1 = call <8 x i32> @llvm.loongarch.lasx.xvmaddwod.w.h(<8 x i32> <i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7>, <16 x i16> <i16 8, i16 9, i16 10, i16 11, i16 12, i16 13, i16 14, i16 15, i16 16, i16 17, i16 18, i16 19, i16 20, i16 21, i16 22, i16 23>, <16 x i16> <i16 24, i16 25, i16 26, i16 27, i16 28, i16 29, i16 30, i16 31, i16 32, i16 33, i16 34, i16 35, i16 36, i16 37, i16 38, i16 39>)
+ ret <8 x i32> %1
+}
+
+define <8 x i32> @tgt() {
+ ret <8 x i32> <i32 225, i32 298, i32 379, i32 468, i32 565, i32 670, i32 783, i32 904>
+}
+
+declare <8 x i32> @llvm.loongarch.lasx.xvmaddwod.w.h(<8 x i32>, <16 x i16>, <16 x i16>)
+
