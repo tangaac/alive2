@@ -3,11 +3,11 @@
 #include "ir/instr.h"
 
 namespace IR {
-class X86IntrinBinOp final : public Instr {
+class LoongArchIntrinBinOp final : public Instr {
 public:
   enum Op {
 #define PROCESS(NAME, A, B, C, D, E, F) NAME,
-#include "x86_intrinsics_binop.inc"
+#include "loongarch_intrinsics_binop.inc"
 #undef PROCESS
   };
 
@@ -16,7 +16,8 @@ private:
   Op op;
 
 public:
-  X86IntrinBinOp(Type &type, std::string &&name, Value &a, Value &b, Op op)
+  LoongArchIntrinBinOp(Type &type, std::string &&name, Value &a, Value &b,
+                       Op op)
       : Instr(type, std::move(name)), a(&a), b(&b), op(op) {}
   std::vector<Value *> operands() const override;
   bool propagatesPoison() const override;
@@ -29,11 +30,11 @@ public:
                              const std::string &suffix) const override;
 };
 
-class X86IntrinTerOp final : public Instr {
+class LoongArchIntrinTerOp final : public Instr {
 public:
   enum Op {
 #define PROCESS(NAME, A, B, C, D, E, F, G, H) NAME,
-#include "x86_intrinsics_terop.inc"
+#include "loongarch_intrinsics_terop.inc"
 #undef PROCESS
   };
 
@@ -42,8 +43,8 @@ private:
   Op op;
 
 public:
-  X86IntrinTerOp(Type &type, std::string &&name, Value &a, Value &b, Value &c,
-                 Op op)
+  LoongArchIntrinTerOp(Type &type, std::string &&name, Value &a, Value &b,
+                       Value &c, Op op)
       : Instr(type, std::move(name)), a(&a), b(&b), c(&c), op(op) {}
   std::vector<Value *> operands() const override;
   bool propagatesPoison() const override;

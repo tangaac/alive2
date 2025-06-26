@@ -5,7 +5,7 @@
 #include "llvm_util/utils.h"
 #include "ir/function.h"
 #include "ir/instr.h"
-#include "ir/x86_intrinsics.h"
+#include "ir/loongarch_intrinsics.h"
 #include "llvm/IR/Constants.h"
 #include "llvm/Analysis/MemoryBuiltins.h"
 #include "llvm/Analysis/TargetLibraryInfo.h"
